@@ -4,10 +4,20 @@ import styles from './login.module.css'
 import { AiOutlineGoogle } from 'react-icons/ai'
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from '@/firebase';
-import { setCookie } from '@/actions';
 import { useRouter } from 'next/navigation'
 
-export default function Login() {
+function setCookie(cname: string, cvalue: string, expiry: number = 1) {
+  const d = new Date();
+  d.setTime(d.getTime() + expiry * 24 * 60 * 60 * 1000);
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+type PropsLogin = {
+  setUid: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Login : React.FC<PropsLogin> = ({ setUid }) => {
 
   const router = useRouter();
 
@@ -21,7 +31,7 @@ export default function Login() {
           const user = result.user;
           setCookie('uid', user.uid);
           setCookie('photoURL', user?.photoURL ? user.photoURL : "");
-          router.refresh();
+          setUid(user.uid);
         }
       }).catch((error) => {
         // Handle Errors here.
@@ -55,3 +65,5 @@ export default function Login() {
     </>
   )
 }
+
+export default Login;

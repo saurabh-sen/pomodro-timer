@@ -1,9 +1,9 @@
 "use client"
 function setCookie(cname: string, cvalue: string, expiry: number = 1) {
-  const d = new Date();
-  d.setTime(d.getTime() + expiry * 24 * 60 * 60 * 1000);
-  const expires = "expires=" + d.toUTCString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    const d = new Date();
+    d.setTime(d.getTime() + expiry * 24 * 60 * 60 * 1000);
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
 function getCookie(cname: string): string {
