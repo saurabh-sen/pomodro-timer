@@ -27,9 +27,9 @@ const Timer: React.FC = () => {
             <Time minutes={minutes} seconds={seconds} />
             {
                 isBreak ?
-                    <p className="text-2xl text-white font-semibold">Break</p>
+                    <p className="text-2xl font-semibold">Break</p>
                     :
-                    <p className="text-2xl text-white font-semibold">Focus</p>
+                    <p className="text-2xl font-semibold">Focus</p>
             }
             <Actions setTime={setTime} setIsBreak={setIsBreak} isBreak={isBreak} />
         </div>

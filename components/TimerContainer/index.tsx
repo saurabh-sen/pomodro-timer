@@ -24,7 +24,7 @@ const TimerContainer = () => {
     const photoURL = getCookie('photoURL');
 
     return (
-        <div className="timercontainer flex justify-center items-center min-h-screen gap-16">
+        <div className="timercontainer flex justify-center items-center min-h-screen gap-16 flex-col sm:flex-row">
             <Avatar photoURL={photoURL} />
             <Timer />
         </div>
